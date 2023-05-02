@@ -6,7 +6,7 @@
 
 |      Input       |        type         |                                            Example/Default                                            |                             Description                             |
 | :--------------: | :-----------------: | :---------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------: |
-| pkg_url | `string` (required) | None | Location of pkg to install. This will be downloaded by the action. |
+| pkg_url | `string` (required) | None | Location of pkg to install. This will be downloaded and installed by the action. |
 
 
 ## Usage
@@ -14,10 +14,11 @@
 ```yaml
 ...
     steps:
-      - uses: actions/checkout@v3
       - name: macOS pkg install
         id: install-pkg
         uses: joncrain/macos-pkg-install@v1.0
+        with:
+          pkg_url: https://github.com/munki/munki/releases/download/v6.3.1/munkitools-6.3.1.4580.pkg
 ```
 
 * Free software: [MIT license](LICENSE)

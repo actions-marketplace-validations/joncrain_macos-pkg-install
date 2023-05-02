@@ -17,10 +17,10 @@ runs:
     - name: Download pkg
       id: download
       run: |
-        curl ${{ inputs.pkg_url }} -o ${{ github.action_path }}/pkg
+        /usr/bin/curl ${{ inputs.pkg_url }} -o ${{ github.action_path }}/installer.pkg
       shell: bash
     - name: Install pkg
       id: install
       run: |
-        sudo installer -pkg ${{ github.action_path }}/pkg -target /
+        /usr/sbin/installer -pkg ${{ github.action_path }}/installer.pkg -target /
       shell: bash
