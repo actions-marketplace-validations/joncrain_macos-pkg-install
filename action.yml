@@ -1,0 +1,26 @@
+name: Install macOS pkg Action
+author: joncrain
+description: GitHub Action to install a macOS package on the runner.
+
+branding:
+  icon: command
+  color: gray-dark
+
+inputs:
+  pkg_url:
+    required: true
+    description: URL to the pkg to download and install.
+
+runs:
+  using: "composite"
+  steps:
+    - name: Download pkg
+      id: download
+      run: |
+        curl ${{ inputs.pkg_url }} -o ${{ github.action_path }}/pkg
+      shell: bash
+    - name: Install pkg
+      id: install
+      run: |
+        sudo installer -pkg ${{ github.action_path }}/pkg -target /
+      shell: bash
