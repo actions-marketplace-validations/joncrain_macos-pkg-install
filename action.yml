@@ -22,5 +22,5 @@ runs:
     - name: Install pkg
       id: install
       run: |
-        /usr/sbin/installer -pkg ${{ github.action_path }}/installer.pkg -target /
+        sudo /usr/sbin/installer -pkg ${{ github.action_path }}/installer.pkg -target /
       shell: bash
